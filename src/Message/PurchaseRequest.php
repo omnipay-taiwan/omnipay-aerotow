@@ -119,7 +119,7 @@ class PurchaseRequest extends AbstractRequest
      */
     public function setReAUrl($reAUrl)
     {
-        return $this->setParameter('ReAUrl', $reAUrl);
+        return $this->setReceiveUrl($reAUrl);
     }
 
     /**
@@ -127,7 +127,7 @@ class PurchaseRequest extends AbstractRequest
      */
     public function getReAUrl()
     {
-        return $this->getParameter('ReAUrl');
+        return $this->getReceiveUrl();
     }
 
     /**
@@ -145,6 +145,23 @@ class PurchaseRequest extends AbstractRequest
     public function getReBUrl()
     {
         return $this->getReturnUrl();
+    }
+
+    /**
+     * @param string $receiveUrl
+     * @return PurchaseRequest
+     */
+    public function setReceiveUrl($receiveUrl)
+    {
+        return $this->setParameter('ReAUrl', $receiveUrl);
+    }
+
+    /**
+     * @return string
+     */
+    public function getReceiveUrl()
+    {
+        return $this->getParameter('ReAUrl');
     }
 
     /**
@@ -180,7 +197,7 @@ class PurchaseRequest extends AbstractRequest
             'Product' => $this->getProduct(),
             'Name' => $this->getName(),
             'MSG' => $this->getDescription(),
-            'ReAUrl' => $this->getReAUrl(),
+            'ReAUrl' => $this->getReceiveUrl(),
             'ReBUrl' => $this->getReturnUrl(),
         ];
     }

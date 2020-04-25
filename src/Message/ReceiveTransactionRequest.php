@@ -33,7 +33,10 @@ class ReceiveTransactionRequest extends AbstractRequest
         return $this->response = new ReceiveTransactionResponse($this, $data);
     }
 
-    private function isAtm()
+    /**
+     * @return string
+     */
+    public function isAtm()
     {
         return $this->getACID();
     }
