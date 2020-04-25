@@ -5,7 +5,7 @@ namespace Omnipay\Aerotow\Tests;
 use Omnipay\Aerotow\AtmGateway;
 use Omnipay\Aerotow\Message\CompletePurchaseRequest;
 use Omnipay\Aerotow\Message\PurchaseRequest;
-use Omnipay\Aerotow\Message\ReceiveTransactionRequest;
+use Omnipay\Aerotow\Message\ReceiveRequest;
 use Omnipay\Tests\GatewayTestCase;
 
 class AtmGatewayTest extends GatewayTestCase
@@ -38,8 +38,8 @@ class AtmGatewayTest extends GatewayTestCase
     public function testReceiveTransaction()
     {
         $options = [];
-        $request = $this->gateway->receiveTransaction($options);
+        $request = $this->gateway->receive($options);
 
-        $this->assertInstanceOf(ReceiveTransactionRequest::class, $request);
+        $this->assertInstanceOf(ReceiveRequest::class, $request);
     }
 }

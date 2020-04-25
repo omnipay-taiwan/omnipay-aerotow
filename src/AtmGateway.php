@@ -4,7 +4,7 @@ namespace Omnipay\Aerotow;
 
 use Omnipay\Aerotow\Message\CompletePurchaseRequest;
 use Omnipay\Aerotow\Message\PurchaseRequest;
-use Omnipay\Aerotow\Message\ReceiveTransactionRequest;
+use Omnipay\Aerotow\Message\ReceiveRequest;
 use Omnipay\Aerotow\Traits\HasMerchant;
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Message\NotificationInterface;
@@ -124,8 +124,8 @@ class AtmGateway extends AbstractGateway
      * @param array $parameters
      * @return RequestInterface
      */
-    public function receiveTransaction(array $parameters = [])
+    public function receive(array $parameters = [])
     {
-        return $this->createRequest(ReceiveTransactionRequest::class, $parameters);
+        return $this->createRequest(ReceiveRequest::class, $parameters);
     }
 }
