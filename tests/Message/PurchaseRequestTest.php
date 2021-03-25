@@ -25,7 +25,7 @@ class PurchaseRequestTest extends TestCase
             'endpoint' => 'http://myhomepei.com',
         ]));
 
-        $this->assertEquals($parameters, $request->getData());
+        self::assertEquals($parameters, $request->getData());
 
         return [$request->send(), $parameters];
     }
@@ -38,11 +38,11 @@ class PurchaseRequestTest extends TestCase
     {
         list($response, $parameters) = $results;
 
-        $this->assertFalse($response->isSuccessful());
-        $this->assertTrue($response->isRedirect());
-        $this->assertEquals('POST', $response->getRedirectMethod());
-        $this->assertEquals('http://myhomepei.com/api/getway05/VracRequest.ashx', $response->getRedirectUrl());
-        $this->assertEquals($parameters, $response->getRedirectData());
+        self::assertFalse($response->isSuccessful());
+        self::assertTrue($response->isRedirect());
+        self::assertEquals('POST', $response->getRedirectMethod());
+        self::assertEquals('http://myhomepei.com/api/getway05/VracRequest.ashx', $response->getRedirectUrl());
+        self::assertEquals($parameters, $response->getRedirectData());
     }
 
     public function testCvsGetData()
@@ -64,7 +64,7 @@ class PurchaseRequestTest extends TestCase
             'endpoint' => 'http://myhomepei.com',
         ]));
 
-        $this->assertEquals($parameters, $request->getData());
+        self::assertEquals($parameters, $request->getData());
 
         return [$request->send(), $parameters];
     }
@@ -77,10 +77,10 @@ class PurchaseRequestTest extends TestCase
     {
         list($response, $parameters) = $results;
 
-        $this->assertFalse($response->isSuccessful());
-        $this->assertTrue($response->isRedirect());
-        $this->assertEquals('POST', $response->getRedirectMethod());
-        $this->assertEquals('http://myhomepei.com/api/getway01/CodeRequest.ashx', $response->getRedirectUrl());
-        $this->assertEquals($parameters, $response->getRedirectData());
+        self::assertFalse($response->isSuccessful());
+        self::assertTrue($response->isRedirect());
+        self::assertEquals('POST', $response->getRedirectMethod());
+        self::assertEquals('http://myhomepei.com/api/getway01/CodeRequest.ashx', $response->getRedirectUrl());
+        self::assertEquals($parameters, $response->getRedirectData());
     }
 }

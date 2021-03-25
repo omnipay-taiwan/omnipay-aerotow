@@ -19,7 +19,7 @@ class CompletePurchaseRequestTest extends TestCase
         $request = new CompletePurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
         $request->initialize(array_merge($parameters, []));
 
-        $this->assertEquals($parameters, $request->getData());
+        self::assertEquals($parameters, $request->getData());
 
         return [$request->send(), $parameters];
     }
@@ -32,9 +32,9 @@ class CompletePurchaseRequestTest extends TestCase
     {
         list($response, $parameters) = $results;
 
-        $this->assertTrue($response->isSuccessful());
-        $this->assertEquals('0000', $response->getCode());
-        $this->assertEquals('TV20180521000002', $response->getTransactionId());
-        $this->assertEquals($parameters, $response->getData());
+        self::assertTrue($response->isSuccessful());
+        self::assertEquals('0000', $response->getCode());
+        self::assertEquals('TV20180521000002', $response->getTransactionId());
+        self::assertEquals($parameters, $response->getData());
     }
 }

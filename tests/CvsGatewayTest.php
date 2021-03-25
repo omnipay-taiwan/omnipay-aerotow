@@ -22,8 +22,8 @@ class CvsGatewayTest extends GatewayTestCase
         $options = ['endpoint' => 'foo.bar', 'Name' => 'foo', 'OrderID' => 'abc', 'amount' => '10.00', 'ReAUrl' => 'foo.bar', 'ReBUrl' => 'foo.bar'];
         $request = $this->gateway->purchase($options);
 
-        $this->assertInstanceOf(PurchaseRequest::class, $request);
-        $this->assertArrayHasKey('Total', $request->getData());
+        self::assertInstanceOf(PurchaseRequest::class, $request);
+        self::assertArrayHasKey('Total', $request->getData());
     }
 
     public function testCompletePurchase()
@@ -31,7 +31,7 @@ class CvsGatewayTest extends GatewayTestCase
         $options = ['transactionReference' => 'abc123'];
         $request = $this->gateway->completePurchase($options);
 
-        $this->assertInstanceOf(CompletePurchaseRequest::class, $request);
+        self::assertInstanceOf(CompletePurchaseRequest::class, $request);
     }
 
     public function testReceiveTransaction()
@@ -39,6 +39,6 @@ class CvsGatewayTest extends GatewayTestCase
         $options = [];
         $request = $this->gateway->receive($options);
 
-        $this->assertInstanceOf(ReceiveRequest::class, $request);
+        self::assertInstanceOf(ReceiveRequest::class, $request);
     }
 }

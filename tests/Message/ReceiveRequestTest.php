@@ -17,7 +17,7 @@ class ReceiveRequestTest extends TestCase
         $request = new ReceiveRequest($this->getHttpClient(), $this->getHttpRequest());
         $request->initialize($parameters);
 
-        $this->assertEquals($parameters, $request->getData());
+        self::assertEquals($parameters, $request->getData());
 
         return [$request->send(), $parameters];
     }
@@ -30,9 +30,9 @@ class ReceiveRequestTest extends TestCase
     {
         list($response, $parameters) = $results;
 
-        $this->assertTrue($response->isSuccessful());
-        $this->assertEquals($parameters['Ordernum'], $response->getTransactionId());
-        $this->assertEquals($parameters, $response->getData());
+        self::assertTrue($response->isSuccessful());
+        self::assertEquals($parameters['Ordernum'], $response->getTransactionId());
+        self::assertEquals($parameters, $response->getData());
     }
 
     public function testCvsGetData()
@@ -46,7 +46,7 @@ class ReceiveRequestTest extends TestCase
         $request = new ReceiveRequest($this->getHttpClient(), $this->getHttpRequest());
         $request->initialize($parameters);
 
-        $this->assertEquals($parameters, $request->getData());
+        self::assertEquals($parameters, $request->getData());
 
         return [$request->send(), $parameters];
     }
@@ -59,8 +59,8 @@ class ReceiveRequestTest extends TestCase
     {
         list($response, $parameters) = $results;
 
-        $this->assertTrue($response->isSuccessful());
-        $this->assertEquals($parameters['Ordernum'], $response->getTransactionId());
-        $this->assertEquals($parameters, $response->getData());
+        self::assertTrue($response->isSuccessful());
+        self::assertEquals($parameters['Ordernum'], $response->getTransactionId());
+        self::assertEquals($parameters, $response->getData());
     }
 }
