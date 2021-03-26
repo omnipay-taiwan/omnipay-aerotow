@@ -2,6 +2,7 @@
 
 namespace Omnipay\Aerotow;
 
+use Omnipay\Aerotow\Message\AcceptNotificationRequest;
 use Omnipay\Aerotow\Message\CompletePurchaseRequest;
 use Omnipay\Aerotow\Message\PurchaseRequest;
 use Omnipay\Aerotow\Message\ReceiveRequest;
@@ -67,7 +68,6 @@ use Omnipay\Common\Message\RequestInterface;
  *     echo "Transaction reference = " . $sale_id . "\n";
  * }
  * </code>
- * @method NotificationInterface acceptNotification(array $options = [])
  * @method RequestInterface authorize(array $options = [])
  * @method RequestInterface completeAuthorize(array $options = [])
  * @method RequestInterface capture(array $options = [])
@@ -108,9 +108,7 @@ class AtmGateway extends AbstractGateway
      */
     public function purchase(array $options = [])
     {
-        return array_key_exists('ACID', $options) || array_key_exists('StoreCode', $options)
-            ? $this->receive($options)
-            : $this->createRequest(PurchaseRequest::class, $options);
+        return $this->createRequest(PurchaseRequest::class, $options);
     }
 
     /**
@@ -119,7 +117,20 @@ class AtmGateway extends AbstractGateway
      */
     public function completePurchase(array $options = [])
     {
-        return $this->createRequest(CompletePurchaseRequest::class, $options);
+        if (array_key_exists('ACID', $options) || array_key_exists('StoreCode', $options)) {
+            return $this->receive($options);
+        }
+
+        return $this->acceptNotification($options);
+    }
+
+    /**
+     * @param array $options
+     * @return RequestInterface|NotificationInterface
+     */
+    public function acceptNotification(array $options = [])
+    {
+        return $this->createRequest(AcceptNotificationRequest::class, $options);
     }
 
     /**
