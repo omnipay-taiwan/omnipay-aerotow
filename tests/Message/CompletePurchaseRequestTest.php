@@ -9,7 +9,7 @@ class CompletePurchaseRequestTest extends TestCase
 {
     public function testGetData()
     {
-        $parameters = [
+        $options = [
             'Ordernum' => 'TV20180521000002',
             'ACTCode' => '8089205603291469800',
             'Total' => '100',
@@ -17,11 +17,11 @@ class CompletePurchaseRequestTest extends TestCase
         ];
 
         $request = new CompletePurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
-        $request->initialize(array_merge($parameters, []));
+        $request->initialize(array_merge($options, []));
 
-        self::assertEquals($parameters, $request->getData());
+        self::assertEquals($options, $request->getData());
 
-        return [$request->send(), $parameters];
+        return [$request->send(), $options];
     }
 
     /**
@@ -30,11 +30,11 @@ class CompletePurchaseRequestTest extends TestCase
      */
     public function testSend($results)
     {
-        list($response, $parameters) = $results;
+        list($response, $options) = $results;
 
         self::assertTrue($response->isSuccessful());
         self::assertEquals('0000', $response->getCode());
         self::assertEquals('TV20180521000002', $response->getTransactionId());
-        self::assertEquals($parameters, $response->getData());
+        self::assertEquals($options, $response->getData());
     }
 }

@@ -9,7 +9,7 @@ class PurchaseRequestTest extends TestCase
 {
     public function testAtmGetData()
     {
-        $parameters = [
+        $options = [
             'Merchent' => 'TV',
             'OrderID' => 'TV20180521000002',
             'Product' => '享樂卡',
@@ -20,14 +20,14 @@ class PurchaseRequestTest extends TestCase
             'ReBUrl' => 'http://localhost/return.php',
         ];
         $request = new PurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
-        $request->initialize(array_merge($parameters, [
+        $request->initialize(array_merge($options, [
             'gateway_name' => 'Aerotow_ATM',
             'endpoint' => 'http://myhomepei.com',
         ]));
 
-        self::assertEquals($parameters, $request->getData());
+        self::assertEquals($options, $request->getData());
 
-        return [$request->send(), $parameters];
+        return [$request->send(), $options];
     }
 
     /**
@@ -36,18 +36,18 @@ class PurchaseRequestTest extends TestCase
      */
     public function testAtmSend($results)
     {
-        list($response, $parameters) = $results;
+        list($response, $options) = $results;
 
         self::assertFalse($response->isSuccessful());
         self::assertTrue($response->isRedirect());
         self::assertEquals('POST', $response->getRedirectMethod());
         self::assertEquals('http://myhomepei.com/api/getway05/VracRequest.ashx', $response->getRedirectUrl());
-        self::assertEquals($parameters, $response->getRedirectData());
+        self::assertEquals($options, $response->getRedirectData());
     }
 
     public function testCvsGetData()
     {
-        $parameters = [
+        $options = [
             'Merchent' => 'TV',
             'OrderID' => 'TV20180521000002',
             'Product' => '享樂卡',
@@ -59,14 +59,14 @@ class PurchaseRequestTest extends TestCase
             'ReBUrl' => 'http://localhost/return.php',
         ];
         $request = new PurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
-        $request->initialize(array_merge($parameters, [
+        $request->initialize(array_merge($options, [
             'gateway_name' => 'Aerotow_CVS',
             'endpoint' => 'http://myhomepei.com',
         ]));
 
-        self::assertEquals($parameters, $request->getData());
+        self::assertEquals($options, $request->getData());
 
-        return [$request->send(), $parameters];
+        return [$request->send(), $options];
     }
 
     /**
@@ -75,12 +75,12 @@ class PurchaseRequestTest extends TestCase
      */
     public function testCvsSend($results)
     {
-        list($response, $parameters) = $results;
+        list($response, $options) = $results;
 
         self::assertFalse($response->isSuccessful());
         self::assertTrue($response->isRedirect());
         self::assertEquals('POST', $response->getRedirectMethod());
         self::assertEquals('http://myhomepei.com/api/getway01/CodeRequest.ashx', $response->getRedirectUrl());
-        self::assertEquals($parameters, $response->getRedirectData());
+        self::assertEquals($options, $response->getRedirectData());
     }
 }

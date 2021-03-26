@@ -9,17 +9,17 @@ class ReceiveRequestTest extends TestCase
 {
     public function testAtmGetData()
     {
-        $parameters = [
+        $options = [
             'Ordernum' => 'TV20180521000002',
             'ACID' => '8089205603291469800',
             'Total' => 100,
         ];
         $request = new ReceiveRequest($this->getHttpClient(), $this->getHttpRequest());
-        $request->initialize($parameters);
+        $request->initialize($options);
 
-        self::assertEquals($parameters, $request->getData());
+        self::assertEquals($options, $request->getData());
 
-        return [$request->send(), $parameters];
+        return [$request->send(), $options];
     }
 
     /**
@@ -28,27 +28,27 @@ class ReceiveRequestTest extends TestCase
      */
     public function testAtmSend($results)
     {
-        list($response, $parameters) = $results;
+        list($response, $options) = $results;
 
         self::assertTrue($response->isSuccessful());
-        self::assertEquals($parameters['Ordernum'], $response->getTransactionId());
-        self::assertEquals($parameters, $response->getData());
+        self::assertEquals($options['Ordernum'], $response->getTransactionId());
+        self::assertEquals($options, $response->getData());
     }
 
     public function testCvsGetData()
     {
-        $parameters = [
+        $options = [
             'Ordernum' => 'TV20180521000002',
             'StoreCode' => 'AB2AB15XX10004',
             'Total' => 100,
             'mobileUrl' => 'https://aaa.bbb.com.tw/mPay?AA160824000000',
         ];
         $request = new ReceiveRequest($this->getHttpClient(), $this->getHttpRequest());
-        $request->initialize($parameters);
+        $request->initialize($options);
 
-        self::assertEquals($parameters, $request->getData());
+        self::assertEquals($options, $request->getData());
 
-        return [$request->send(), $parameters];
+        return [$request->send(), $options];
     }
 
     /**
@@ -57,10 +57,10 @@ class ReceiveRequestTest extends TestCase
      */
     public function testCvsSend($results)
     {
-        list($response, $parameters) = $results;
+        list($response, $options) = $results;
 
         self::assertTrue($response->isSuccessful());
-        self::assertEquals($parameters['Ordernum'], $response->getTransactionId());
-        self::assertEquals($parameters, $response->getData());
+        self::assertEquals($options['Ordernum'], $response->getTransactionId());
+        self::assertEquals($options, $response->getData());
     }
 }
