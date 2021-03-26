@@ -31,6 +31,7 @@ class ReceiveRequestTest extends TestCase
         list($response, $options) = $results;
 
         self::assertTrue($response->isSuccessful());
+        self::assertFalse($response->isRedirect());
         self::assertEquals($options['Ordernum'], $response->getTransactionId());
         self::assertEquals($options, $response->getData());
     }
@@ -59,7 +60,8 @@ class ReceiveRequestTest extends TestCase
     {
         list($response, $options) = $results;
 
-        self::assertTrue($response->isSuccessful());
+        self::assertFalse($response->isSuccessful());
+        self::assertTrue($response->isRedirect());
         self::assertEquals($options['Ordernum'], $response->getTransactionId());
         self::assertEquals($options, $response->getData());
     }

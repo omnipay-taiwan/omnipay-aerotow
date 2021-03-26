@@ -11,12 +11,12 @@ class PurchaseRequest extends AbstractRequest
     use HasMerchant;
 
     /**
-     * @param string $orderId
+     * @param string $value
      * @return PurchaseRequest
      */
-    public function setOrderID($orderId)
+    public function setOrderID($value)
     {
-        return $this->setTransactionId($orderId);
+        return $this->setTransactionId($value);
     }
 
     /**
@@ -28,12 +28,12 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param string $total
+     * @param string $value
      * @return PurchaseRequest
      */
-    public function setTotal($total)
+    public function setTotal($value)
     {
-        return $this->setAmount($total);
+        return $this->setAmount($value);
     }
 
     /**
@@ -46,12 +46,12 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param string $product
+     * @param string $value
      * @return PurchaseRequest
      */
-    public function setProduct($product)
+    public function setProduct($value)
     {
-        return $this->setParameter('Product', $product);
+        return $this->setParameter('Product', $value);
     }
 
     /**
@@ -63,12 +63,12 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param string $name
+     * @param string $value
      * @return PurchaseRequest
      */
-    public function setName($name)
+    public function setName($value)
     {
-        return $this->setParameter('Name', $name);
+        return $this->setParameter('Name', $value);
     }
 
     /**
@@ -80,12 +80,12 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param int $hour
+     * @param int $value
      * @return PurchaseRequest
      */
-    public function setHour($hour)
+    public function setHour($value)
     {
-        return $this->setParameter('Hour', $hour);
+        return $this->setParameter('Hour', $value);
     }
 
     /**
@@ -97,12 +97,12 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param string $msg
+     * @param string $value
      * @return PurchaseRequest
      */
-    public function setMSG($msg)
+    public function setMSG($value)
     {
-        return $this->setDescription($msg);
+        return $this->setDescription($value);
     }
 
     /**
@@ -114,12 +114,12 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param string $reAUrl
+     * @param string $value
      * @return PurchaseRequest
      */
-    public function setReAUrl($reAUrl)
+    public function setReAUrl($value)
     {
-        return $this->setReceiveUrl($reAUrl);
+        return $this->setReturnUrl($value);
     }
 
     /**
@@ -127,16 +127,16 @@ class PurchaseRequest extends AbstractRequest
      */
     public function getReAUrl()
     {
-        return $this->getReceiveUrl();
+        return $this->getReturnUrl();
     }
 
     /**
-     * @param string $returnUrl
+     * @param string $value
      * @return PurchaseRequest
      */
-    public function setReBUrl($returnUrl)
+    public function setReBUrl($value)
     {
-        return $this->setReturnUrl($returnUrl);
+        return $this->setNotifyUrl($value);
     }
 
     /**
@@ -144,24 +144,7 @@ class PurchaseRequest extends AbstractRequest
      */
     public function getReBUrl()
     {
-        return $this->getReturnUrl();
-    }
-
-    /**
-     * @param string $receiveUrl
-     * @return PurchaseRequest
-     */
-    public function setReceiveUrl($receiveUrl)
-    {
-        return $this->setParameter('ReAUrl', $receiveUrl);
-    }
-
-    /**
-     * @return string
-     */
-    public function getReceiveUrl()
-    {
-        return $this->getParameter('ReAUrl');
+        return $this->getNotifyUrl();
     }
 
     /**
@@ -188,7 +171,7 @@ class PurchaseRequest extends AbstractRequest
      */
     private function getAtmData()
     {
-        $this->validate('endpoint', 'Merchant', 'transactionId', 'amount', 'ReAUrl', 'returnUrl');
+        $this->validate('endpoint', 'Merchant', 'transactionId', 'amount', 'notifyUrl', 'returnUrl');
 
         return [
             'Merchent' => $this->getMerchant(),
@@ -197,14 +180,18 @@ class PurchaseRequest extends AbstractRequest
             'Product' => $this->getProduct(),
             'Name' => $this->getName(),
             'MSG' => $this->getDescription(),
-            'ReAUrl' => $this->getReceiveUrl(),
-            'ReBUrl' => $this->getReturnUrl(),
+            'ReAUrl' => $this->getReturnUrl(),
+            'ReBUrl' => $this->getNotifyUrl(),
         ];
     }
 
+    /**
+     * @return array
+     * @throws InvalidRequestException
+     */
     private function getCvsData()
     {
-        $this->validate('endpoint', 'Merchant', 'Name', 'transactionId', 'amount', 'ReAUrl', 'returnUrl');
+        $this->validate('endpoint', 'Merchant', 'Name', 'transactionId', 'amount', 'notifyUrl', 'returnUrl');
 
         return array_merge($this->getAtmData(), [
             'Hour' => $this->getHour(),

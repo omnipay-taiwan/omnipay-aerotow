@@ -108,7 +108,9 @@ class AtmGateway extends AbstractGateway
      */
     public function purchase(array $options = [])
     {
-        return $this->createRequest(PurchaseRequest::class, $options);
+        return array_key_exists('ACID', $options) || array_key_exists('StoreCode', $options)
+            ? $this->receive($options)
+            : $this->createRequest(PurchaseRequest::class, $options);
     }
 
     /**

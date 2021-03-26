@@ -37,8 +37,8 @@ class AtmGatewayTest extends GatewayTestCase
 
     public function testReceiveTransaction()
     {
-        $options = [];
-        $request = $this->gateway->receive($options);
+        $options = ['ACID' => 'ACID'];
+        $request = $this->gateway->purchase($options);
 
         self::assertInstanceOf(ReceiveRequest::class, $request);
     }
