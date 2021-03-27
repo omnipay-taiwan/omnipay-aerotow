@@ -3,7 +3,6 @@
 namespace Omnipay\Aerotow;
 
 use Omnipay\Aerotow\Message\AcceptNotificationRequest;
-use Omnipay\Aerotow\Message\CompletePurchaseRequest;
 use Omnipay\Aerotow\Message\PurchaseRequest;
 use Omnipay\Aerotow\Message\ReceiveTransactionInfoRequest;
 use Omnipay\Aerotow\Traits\HasMerchant;

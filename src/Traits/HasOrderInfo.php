@@ -5,12 +5,12 @@ namespace Omnipay\Aerotow\Traits;
 trait HasOrderInfo
 {
     /**
-     * @param string $orderNum
+     * @param string $value
      * @return $this
      */
-    public function setOrderNum($orderNum)
+    public function setOrderNum($value)
     {
-        return $this->setParameter('Ordernum', $orderNum);
+        return $this->setTransactionId($value);
     }
 
     /**
@@ -18,7 +18,7 @@ trait HasOrderInfo
      */
     public function getOrderNum()
     {
-        return $this->getParameter('Ordernum');
+        return $this->getTransactionId();
     }
 
     /**
