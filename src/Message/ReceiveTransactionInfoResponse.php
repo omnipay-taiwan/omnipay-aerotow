@@ -5,7 +5,7 @@ namespace Omnipay\Aerotow\Message;
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RedirectResponseInterface;
 
-class ReceiveResponse extends AbstractResponse implements RedirectResponseInterface
+class ReceiveTransactionInfoResponse extends AbstractResponse implements RedirectResponseInterface
 {
     /**
      * Is the response successful?

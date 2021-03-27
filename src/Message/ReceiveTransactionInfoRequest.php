@@ -9,7 +9,7 @@ use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\AbstractRequest;
 use Omnipay\Common\Message\ResponseInterface;
 
-class ReceiveRequest extends AbstractRequest
+class ReceiveTransactionInfoRequest extends AbstractRequest
 {
     use HasOrderInfo;
     use HasAtmInfo;
@@ -30,7 +30,7 @@ class ReceiveRequest extends AbstractRequest
      */
     public function sendData($data)
     {
-        return $this->response = new ReceiveResponse($this, $data);
+        return $this->response = new ReceiveTransactionInfoResponse($this, $data);
     }
 
     /**

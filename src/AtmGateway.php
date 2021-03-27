@@ -5,7 +5,7 @@ namespace Omnipay\Aerotow;
 use Omnipay\Aerotow\Message\AcceptNotificationRequest;
 use Omnipay\Aerotow\Message\CompletePurchaseRequest;
 use Omnipay\Aerotow\Message\PurchaseRequest;
-use Omnipay\Aerotow\Message\ReceiveRequest;
+use Omnipay\Aerotow\Message\ReceiveTransactionInfoRequest;
 use Omnipay\Aerotow\Traits\HasMerchant;
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Message\NotificationInterface;
@@ -118,7 +118,7 @@ class AtmGateway extends AbstractGateway
     public function completePurchase(array $options = [])
     {
         if (array_key_exists('ACID', $options) || array_key_exists('StoreCode', $options)) {
-            return $this->receive($options);
+            return $this->receiveTransactionInfo($options);
         }
 
         return $this->acceptNotification($options);
@@ -137,8 +137,8 @@ class AtmGateway extends AbstractGateway
      * @param array $options
      * @return RequestInterface
      */
-    public function receive(array $options = [])
+    public function receiveTransactionInfo(array $options = [])
     {
-        return $this->createRequest(ReceiveRequest::class, $options);
+        return $this->createRequest(ReceiveTransactionInfoRequest::class, $options);
     }
 }

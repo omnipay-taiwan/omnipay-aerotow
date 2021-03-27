@@ -2,10 +2,10 @@
 
 namespace Omnipay\Aerotow\Tests\Message;
 
-use Omnipay\Aerotow\Message\ReceiveRequest;
+use Omnipay\Aerotow\Message\ReceiveTransactionInfoRequest;
 use Omnipay\Tests\TestCase;
 
-class ReceiveRequestTest extends TestCase
+class ReceiveTransactionInfoRequestTest extends TestCase
 {
     public function testAtmGetData()
     {
@@ -14,7 +14,7 @@ class ReceiveRequestTest extends TestCase
             'ACID' => '8089205603291469800',
             'Total' => 100,
         ];
-        $request = new ReceiveRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new ReceiveTransactionInfoRequest($this->getHttpClient(), $this->getHttpRequest());
         $request->initialize($options);
 
         self::assertEquals($options, $request->getData());
@@ -44,7 +44,7 @@ class ReceiveRequestTest extends TestCase
             'Total' => 100,
             'mobileUrl' => 'https://aaa.bbb.com.tw/mPay?AA160824000000',
         ];
-        $request = new ReceiveRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new ReceiveTransactionInfoRequest($this->getHttpClient(), $this->getHttpRequest());
         $request->initialize($options);
 
         self::assertEquals($options, $request->getData());
