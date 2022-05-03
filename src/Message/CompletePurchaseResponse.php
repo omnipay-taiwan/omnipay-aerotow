@@ -3,9 +3,8 @@
 namespace Omnipay\Aerotow\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
-use Omnipay\Common\Message\NotificationInterface;
 
-class CompletePurchaseResponse extends AbstractResponse implements NotificationInterface
+class CompletePurchaseResponse extends AbstractResponse
 {
     /**
      * Is the response successful?
@@ -35,10 +34,5 @@ class CompletePurchaseResponse extends AbstractResponse implements NotificationI
     public function getTransactionId()
     {
         return $this->data['Ordernum'];
-    }
-
-    public function getTransactionStatus()
-    {
-        return $this->isSuccessful() ? self::STATUS_COMPLETED : self::STATUS_FAILED;
     }
 }

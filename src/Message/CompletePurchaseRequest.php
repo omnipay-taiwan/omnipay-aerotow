@@ -8,9 +8,8 @@ use Omnipay\Aerotow\Traits\HasMerchant;
 use Omnipay\Aerotow\Traits\HasOrderInfo;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\AbstractRequest;
-use Omnipay\Common\Message\NotificationInterface;
 
-class CompletePurchaseRequest extends AbstractRequest implements NotificationInterface
+class CompletePurchaseRequest extends AbstractRequest
 {
     use HasMerchant;
     use HasOrderInfo;
@@ -50,24 +49,6 @@ class CompletePurchaseRequest extends AbstractRequest implements NotificationInt
     public function sendData($data)
     {
         return $this->response = new CompletePurchaseResponse($this, $data);
-    }
-
-    public function getTransactionStatus()
-    {
-        return $this->getNotification()->getTransactionStatus();
-    }
-
-    public function getMessage()
-    {
-        return $this->getNotification()->getMessage();
-    }
-
-    /**
-     * @return NotificationInterface
-     */
-    protected function getNotification()
-    {
-        return ! $this->response ? $this->send() : $this->response;
     }
 
     /**

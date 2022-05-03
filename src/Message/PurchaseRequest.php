@@ -166,6 +166,14 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
+     * @return bool
+     */
+    public function isAtm()
+    {
+        return $this->getGatewayName() === 'Aerotow_ATM';
+    }
+
+    /**
      * @return array
      * @throws InvalidRequestException
      */
@@ -196,13 +204,5 @@ class PurchaseRequest extends AbstractRequest
         return array_merge($this->getAtmData(), [
             'Hour' => $this->getHour(),
         ]);
-    }
-
-    /**
-     * @return bool
-     */
-    public function isAtm()
-    {
-        return $this->getGatewayName() === 'Aerotow_ATM';
     }
 }

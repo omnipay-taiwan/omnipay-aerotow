@@ -2,7 +2,9 @@
 
 namespace Omnipay\Aerotow\Message;
 
-class AcceptNotificationRequest extends CompletePurchaseRequest
+use Omnipay\Common\Message\NotificationInterface;
+
+class AcceptNotificationRequest extends CompletePurchaseRequest implements NotificationInterface
 {
     /**
      * @param array $data
@@ -11,5 +13,23 @@ class AcceptNotificationRequest extends CompletePurchaseRequest
     public function sendData($data)
     {
         return $this->response = new AcceptNotificationResponse($this, $data);
+    }
+
+    public function getTransactionStatus()
+    {
+        return $this->getNotificationResponse()->getTransactionStatus();
+    }
+
+    public function getMessage()
+    {
+        return $this->getNotificationResponse()->getMessage();
+    }
+
+    /**
+     * @return AcceptNotificationResponse
+     */
+    protected function getNotificationResponse()
+    {
+        return ! $this->response ? $this->send() : $this->response;
     }
 }
