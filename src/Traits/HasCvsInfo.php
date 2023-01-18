@@ -7,7 +7,7 @@ trait HasCvsInfo
     use HasStoreCode;
 
     /**
-     * @param string $mobileUrl
+     * @param  string  $mobileUrl
      * @return $this
      */
     public function setMobileUrl($mobileUrl)

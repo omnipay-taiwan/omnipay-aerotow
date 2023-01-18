@@ -5,7 +5,7 @@ namespace Omnipay\Aerotow\Traits;
 trait HasOrderInfo
 {
     /**
-     * @param string $value
+     * @param  string  $value
      * @return $this
      */
     public function setOrderNum($value)
@@ -22,7 +22,7 @@ trait HasOrderInfo
     }
 
     /**
-     * @param string $total
+     * @param  string  $total
      * @return $this
      */
     public function setTotal($total)

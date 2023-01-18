@@ -5,7 +5,7 @@ namespace Omnipay\Aerotow\Traits;
 trait HasAtmInfo
 {
     /**
-     * @param string $acid
+     * @param  string  $acid
      * @return $this
      */
     public function setACID($acid)

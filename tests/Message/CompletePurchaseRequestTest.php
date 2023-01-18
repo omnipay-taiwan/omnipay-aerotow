@@ -27,7 +27,8 @@ class CompletePurchaseRequestTest extends TestCase
 
     /**
      * @depends testAtmGetData
-     * @param array $results
+     *
+     * @param  array  $results
      */
     public function testAtmSend($results)
     {
@@ -61,7 +62,8 @@ class CompletePurchaseRequestTest extends TestCase
 
     /**
      * @depends testCvsGetData
-     * @param array $results
+     *
+     * @param  array  $results
      */
     public function testCvsSend($results)
     {

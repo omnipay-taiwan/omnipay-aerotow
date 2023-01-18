@@ -7,7 +7,7 @@ trait HasCvsResponse
     use HasStoreCode;
 
     /**
-     * @param string $store
+     * @param  string  $store
      * @return $this
      */
     public function setStore($store)
@@ -24,7 +24,7 @@ trait HasCvsResponse
     }
 
     /**
-     * @param string $storeName
+     * @param  string  $storeName
      * @return $this
      */
     public function setStoreName($storeName)

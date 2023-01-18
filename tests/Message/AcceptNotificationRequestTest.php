@@ -28,7 +28,8 @@ class AcceptNotificationRequestTest extends TestCase
 
     /**
      * @depends testAtmGetData
-     * @param array $results
+     *
+     * @param  array  $results
      */
     public function testAtmSend($results)
     {
@@ -60,7 +61,8 @@ class AcceptNotificationRequestTest extends TestCase
 
     /**
      * @depends testCvsGetData
-     * @param array $results
+     *
+     * @param  array  $results
      */
     public function testCvsSend($results)
     {

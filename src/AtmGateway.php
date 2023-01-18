@@ -68,6 +68,7 @@ use Omnipay\Common\Message\RequestInterface;
  *     echo "Transaction reference = " . $sale_id . "\n";
  * }
  * </code>
+ *
  * @method RequestInterface authorize(array $options = [])
  * @method RequestInterface completeAuthorize(array $options = [])
  * @method RequestInterface capture(array $options = [])
@@ -103,7 +104,7 @@ class AtmGateway extends AbstractGateway
     }
 
     /**
-     * @param array $options
+     * @param  array  $options
      * @return RequestInterface
      */
     public function purchase(array $options = [])
@@ -112,7 +113,7 @@ class AtmGateway extends AbstractGateway
     }
 
     /**
-     * @param array $options
+     * @param  array  $options
      * @return RequestInterface
      */
     public function completePurchase(array $options = [])
@@ -121,7 +122,7 @@ class AtmGateway extends AbstractGateway
     }
 
     /**
-     * @param array $options
+     * @param  array  $options
      * @return RequestInterface|NotificationInterface
      */
     public function acceptNotification(array $options = [])
@@ -130,7 +131,7 @@ class AtmGateway extends AbstractGateway
     }
 
     /**
-     * @param array $options
+     * @param  array  $options
      * @return RequestInterface
      */
     public function payout(array $options = [])

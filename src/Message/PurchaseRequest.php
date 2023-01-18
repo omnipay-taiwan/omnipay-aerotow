@@ -11,7 +11,7 @@ class PurchaseRequest extends AbstractRequest
     use HasMerchant;
 
     /**
-     * @param string $value
+     * @param  string  $value
      * @return PurchaseRequest
      */
     public function setOrderID($value)
@@ -28,7 +28,7 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param string $value
+     * @param  string  $value
      * @return PurchaseRequest
      */
     public function setTotal($value)
@@ -38,6 +38,7 @@ class PurchaseRequest extends AbstractRequest
 
     /**
      * @return int
+     *
      * @throws InvalidRequestException
      */
     public function getTotal()
@@ -46,7 +47,7 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param string $value
+     * @param  string  $value
      * @return PurchaseRequest
      */
     public function setProduct($value)
@@ -63,7 +64,7 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param string $value
+     * @param  string  $value
      * @return PurchaseRequest
      */
     public function setName($value)
@@ -80,7 +81,7 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param int $value
+     * @param  int  $value
      * @return PurchaseRequest
      */
     public function setHour($value)
@@ -97,7 +98,7 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param string $value
+     * @param  string  $value
      * @return PurchaseRequest
      */
     public function setMSG($value)
@@ -114,7 +115,7 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param string $value
+     * @param  string  $value
      * @return PurchaseRequest
      */
     public function setReAUrl($value)
@@ -131,7 +132,7 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param string $value
+     * @param  string  $value
      * @return PurchaseRequest
      */
     public function setReBUrl($value)
@@ -149,6 +150,7 @@ class PurchaseRequest extends AbstractRequest
 
     /**
      * @return array
+     *
      * @throws InvalidRequestException
      */
     public function getData()
@@ -157,7 +159,7 @@ class PurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param array $data
+     * @param  array  $data
      * @return PurchaseResponse
      */
     public function sendData($data)
@@ -175,6 +177,7 @@ class PurchaseRequest extends AbstractRequest
 
     /**
      * @return array
+     *
      * @throws InvalidRequestException
      */
     private function getAtmData()
@@ -195,6 +198,7 @@ class PurchaseRequest extends AbstractRequest
 
     /**
      * @return array
+     *
      * @throws InvalidRequestException
      */
     private function getCvsData()

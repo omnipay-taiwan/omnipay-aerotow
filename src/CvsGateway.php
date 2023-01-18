@@ -62,6 +62,7 @@ use Omnipay\Common\Message\RequestInterface;
  *     echo "Transaction reference = " . $sale_id . "\n";
  * }
  * </code>
+ *
  * @method NotificationInterface acceptNotification(array $options = array())
  * @method RequestInterface authorize(array $options = array())
  * @method RequestInterface completeAuthorize(array $options = array())

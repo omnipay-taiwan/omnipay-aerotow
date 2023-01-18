@@ -5,7 +5,7 @@ namespace Omnipay\Aerotow\Traits;
 trait HasStoreCode
 {
     /**
-     * @param string $storeCode
+     * @param  string  $storeCode
      * @return $this
      */
     public function setStoreCode($storeCode)

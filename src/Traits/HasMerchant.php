@@ -22,7 +22,7 @@ trait HasMerchant
     }
 
     /**
-     * @param string $endpoint
+     * @param  string  $endpoint
      * @return $this
      */
     public function setEndpoint($endpoint)
@@ -39,7 +39,7 @@ trait HasMerchant
     }
 
     /**
-     * @param string $merchant
+     * @param  string  $merchant
      * @return $this
      */
     public function setMerchant($merchant)
@@ -56,7 +56,7 @@ trait HasMerchant
     }
 
     /**
-     * @param string $merchant
+     * @param  string  $merchant
      * @return $this
      */
     public function setMerchent($merchant)

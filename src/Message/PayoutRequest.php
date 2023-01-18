@@ -17,6 +17,7 @@ class PayoutRequest extends AbstractRequest
 
     /**
      * @return array
+     *
      * @throws InvalidRequestException
      */
     public function getData()
@@ -25,7 +26,7 @@ class PayoutRequest extends AbstractRequest
     }
 
     /**
-     * @param mixed $data
+     * @param  mixed  $data
      * @return ResponseInterface
      */
     public function sendData($data)
@@ -43,6 +44,7 @@ class PayoutRequest extends AbstractRequest
 
     /**
      * @return array
+     *
      * @throws InvalidRequestException
      */
     private function getAtmData()

@@ -17,7 +17,7 @@ class CompletePurchaseRequest extends AbstractRequest
     use HasCvsResponse;
 
     /**
-     * @param string $status
+     * @param  string  $status
      * @return CompletePurchaseRequest
      */
     public function setStatus($status)
@@ -35,6 +35,7 @@ class CompletePurchaseRequest extends AbstractRequest
 
     /**
      * @return array
+     *
      * @throws InvalidRequestException
      */
     public function getData()
@@ -43,7 +44,7 @@ class CompletePurchaseRequest extends AbstractRequest
     }
 
     /**
-     * @param array $data
+     * @param  array  $data
      * @return CompletePurchaseResponse
      */
     public function sendData($data)
@@ -53,6 +54,7 @@ class CompletePurchaseRequest extends AbstractRequest
 
     /**
      * @return array
+     *
      * @throws InvalidRequestException
      */
     private function getAtmData()
@@ -68,6 +70,7 @@ class CompletePurchaseRequest extends AbstractRequest
 
     /**
      * @return array
+     *
      * @throws InvalidRequestException
      */
     private function getCvsData()

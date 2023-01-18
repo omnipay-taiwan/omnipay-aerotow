@@ -32,11 +32,12 @@ class PurchaseRequestTest extends TestCase
 
     /**
      * @depends testAtmGetData
-     * @param array $results
+     *
+     * @param  array  $results
      */
     public function testAtmSend($results)
     {
-        list($response, $options) = $results;
+        [$response, $options] = $results;
 
         self::assertFalse($response->isSuccessful());
         self::assertTrue($response->isRedirect());
@@ -71,11 +72,12 @@ class PurchaseRequestTest extends TestCase
 
     /**
      * @depends testCvsGetData
-     * @param array $results
+     *
+     * @param  array  $results
      */
     public function testCvsSend($results)
     {
-        list($response, $options) = $results;
+        [$response, $options] = $results;
 
         self::assertFalse($response->isSuccessful());
         self::assertTrue($response->isRedirect());

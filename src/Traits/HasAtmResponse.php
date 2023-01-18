@@ -7,7 +7,7 @@ trait HasAtmResponse
     /**
      * Response Data.
      *
-     * @param string $actCode
+     * @param  string  $actCode
      * @return $this
      */
     public function setActCode($actCode)
@@ -26,7 +26,7 @@ trait HasAtmResponse
     /**
      * Response Data.
      *
-     * @param string $BKID
+     * @param  string  $BKID
      * @return $this
      */
     public function setBKID($BKID)
