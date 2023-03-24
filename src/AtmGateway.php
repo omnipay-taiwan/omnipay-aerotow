@@ -104,7 +104,6 @@ class AtmGateway extends AbstractGateway
     }
 
     /**
-     * @param  array  $options
      * @return RequestInterface
      */
     public function purchase(array $options = [])
@@ -113,7 +112,6 @@ class AtmGateway extends AbstractGateway
     }
 
     /**
-     * @param  array  $options
      * @return RequestInterface
      */
     public function completePurchase(array $options = [])
@@ -122,7 +120,6 @@ class AtmGateway extends AbstractGateway
     }
 
     /**
-     * @param  array  $options
      * @return RequestInterface|NotificationInterface
      */
     public function acceptNotification(array $options = [])
@@ -131,7 +128,6 @@ class AtmGateway extends AbstractGateway
     }
 
     /**
-     * @param  array  $options
      * @return RequestInterface
      */
     public function payout(array $options = [])

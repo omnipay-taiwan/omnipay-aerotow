@@ -5,7 +5,6 @@ namespace Omnipay\Aerotow\Traits;
 trait HasMerchant
 {
     /**
-     * @param $gatewayName
      * @return $this
      */
     public function setGatewayName($gatewayName)

@@ -2,6 +2,7 @@
 
 namespace Omnipay\Aerotow\Message;
 
+use Omnipay\Aerotow\Traits\HasAmount;
 use Omnipay\Aerotow\Traits\HasAtmResponse;
 use Omnipay\Aerotow\Traits\HasCvsResponse;
 use Omnipay\Aerotow\Traits\HasMerchant;
@@ -15,6 +16,7 @@ class CompletePurchaseRequest extends AbstractRequest
     use HasOrderInfo;
     use HasAtmResponse;
     use HasCvsResponse;
+    use HasAmount;
 
     /**
      * @param  string  $status
@@ -62,7 +64,7 @@ class CompletePurchaseRequest extends AbstractRequest
         return [
             'Ordernum' => $this->getOrderNum(),
             'ACTCode' => $this->getActCode(),
-            'Total' => (int) $this->getAmount(),
+            'Total' => $this->getAmount(),
             'Status' => $this->getStatus(),
             'BKID' => $this->getBKID(),
         ];
@@ -78,7 +80,7 @@ class CompletePurchaseRequest extends AbstractRequest
         return [
             'Ordernum' => $this->getOrderNum(),
             'StoreCode' => $this->getStoreCode(),
-            'Total' => (int) $this->getAmount(),
+            'Total' => $this->getAmount(),
             'Status' => $this->getStatus(),
             'Store' => $this->getStore(),
             'StoreName' => $this->getStoreName(),

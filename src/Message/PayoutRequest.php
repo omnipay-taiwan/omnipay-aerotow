@@ -2,6 +2,7 @@
 
 namespace Omnipay\Aerotow\Message;
 
+use Omnipay\Aerotow\Traits\HasAmount;
 use Omnipay\Aerotow\Traits\HasAtmInfo;
 use Omnipay\Aerotow\Traits\HasCvsInfo;
 use Omnipay\Aerotow\Traits\HasOrderInfo;
@@ -14,6 +15,7 @@ class PayoutRequest extends AbstractRequest
     use HasOrderInfo;
     use HasAtmInfo;
     use HasCvsInfo;
+    use HasAmount;
 
     /**
      * @return array
@@ -52,7 +54,7 @@ class PayoutRequest extends AbstractRequest
         return [
             'Ordernum' => $this->getOrderNum(),
             'ACID' => $this->getACID(),
-            'Total' => (int) $this->getAmount(),
+            'Total' => $this->getAmount(),
         ];
     }
 
@@ -61,7 +63,7 @@ class PayoutRequest extends AbstractRequest
         return [
             'Ordernum' => $this->getOrderNum(),
             'StoreCode' => $this->getStoreCode(),
-            'Total' => (int) $this->getAmount(),
+            'Total' => $this->getAmount(),
             'mobileUrl' => $this->getMobileUrl(),
         ];
     }

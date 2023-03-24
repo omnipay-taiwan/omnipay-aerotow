@@ -2,6 +2,7 @@
 
 namespace Omnipay\Aerotow\Message;
 
+use Omnipay\Aerotow\Traits\HasAmount;
 use Omnipay\Aerotow\Traits\HasMerchant;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\AbstractRequest;
@@ -9,6 +10,7 @@ use Omnipay\Common\Message\AbstractRequest;
 class PurchaseRequest extends AbstractRequest
 {
     use HasMerchant;
+    use HasAmount;
 
     /**
      * @param  string  $value
@@ -43,7 +45,7 @@ class PurchaseRequest extends AbstractRequest
      */
     public function getTotal()
     {
-        return (int) $this->getAmount();
+        return $this->getAmount();
     }
 
     /**
@@ -187,7 +189,7 @@ class PurchaseRequest extends AbstractRequest
         return [
             'Merchent' => $this->getMerchant(),
             'OrderID' => $this->getTransactionId(),
-            'Total' => (int) $this->getAmount(),
+            'Total' => $this->getAmount(),
             'Product' => $this->getProduct(),
             'Name' => $this->getName(),
             'MSG' => $this->getDescription(),
