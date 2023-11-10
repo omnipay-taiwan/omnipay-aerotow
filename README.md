@@ -1,6 +1,6 @@
 # Omnipay: Aerotow
 
-**Skeleton gateway for the Omnipay PHP payment processing library**
+**Aerotow gateway for the Omnipay PHP payment processing library**
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/omnipay-taiwan/omnipay-aerotow.svg?style=flat-square)](https://packagist.org/packages/omnipay-taiwan/omnipay-aerotow)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
