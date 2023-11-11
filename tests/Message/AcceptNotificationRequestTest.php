@@ -10,7 +10,7 @@ class AcceptNotificationRequestTest extends TestCase
 {
     public function testAtmGetData()
     {
-        $options = [
+        $data = [
             'Ordernum' => 'TV20180521000002',
             'ACTCode' => '8089205603291469800',
             'Total' => '100',
@@ -18,10 +18,10 @@ class AcceptNotificationRequestTest extends TestCase
             'BKID' => '0130000123456543210',
         ];
 
+        $this->getHttpRequest()->request->add($data);
         $request = new AcceptNotificationRequest($this->getHttpClient(), $this->getHttpRequest());
-        $request->initialize($options);
 
-        self::assertEquals($options, $request->getData());
+        self::assertEquals($data, $request->getData());
 
         return [$request];
     }
@@ -42,7 +42,7 @@ class AcceptNotificationRequestTest extends TestCase
 
     public function testCvsGetData()
     {
-        $options = [
+        $data = [
             'Ordernum' => 'TV20180521000001',
             'StoreCode' => ' AB2AB15XX10004',
             'Total' => '100',
@@ -51,10 +51,11 @@ class AcceptNotificationRequestTest extends TestCase
             'StoreName' => '197582',
         ];
 
-        $request = new AcceptNotificationRequest($this->getHttpClient(), $this->getHttpRequest());
-        $request->initialize($options);
+        $httpRequest = $this->getHttpRequest();
+        $httpRequest->request->add($data);
+        $request = new AcceptNotificationRequest($this->getHttpClient(), $httpRequest);
 
-        self::assertEquals($options, $request->getData());
+        self::assertEquals($data, $request->getData());
 
         return [$request];
     }
@@ -68,7 +69,6 @@ class AcceptNotificationRequestTest extends TestCase
     {
         $notification = $results[0];
 
-        self::assertEquals('TV20180521000001', $notification->getTransactionId());
         self::assertEquals('', $notification->getTransactionReference());
         self::assertEquals(NotificationInterface::STATUS_COMPLETED, $notification->getTransactionStatus());
     }

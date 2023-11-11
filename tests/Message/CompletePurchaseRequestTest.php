@@ -9,20 +9,20 @@ class CompletePurchaseRequestTest extends TestCase
 {
     public function testAtmGetData()
     {
-        $options = [
+        $data = [
             'Ordernum' => 'TV20180521000002',
             'ACTCode' => '8089205603291469800',
             'Total' => '100',
             'Status' => '0000',
             'BKID' => '0130000123456543210',
         ];
+        $httpRequest = $this->getHttpRequest();
+        $httpRequest->request->add($data);
+        $request = new CompletePurchaseRequest($this->getHttpClient(), $httpRequest);
 
-        $request = new CompletePurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
-        $request->initialize($options);
+        self::assertEquals($data, $request->getData());
 
-        self::assertEquals($options, $request->getData());
-
-        return [$request->send(), $options];
+        return [$request->send(), $data];
     }
 
     /**
@@ -43,7 +43,7 @@ class CompletePurchaseRequestTest extends TestCase
 
     public function testCvsGetData()
     {
-        $options = [
+        $data = [
             'Ordernum' => 'TV20180521000001',
             'StoreCode' => ' AB2AB15XX10004',
             'Total' => '100',
@@ -52,12 +52,13 @@ class CompletePurchaseRequestTest extends TestCase
             'StoreName' => '197582',
         ];
 
-        $request = new CompletePurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
-        $request->initialize($options);
+        $httpRequest = $this->getHttpRequest();
+        $httpRequest->request->add($data);
+        $request = new CompletePurchaseRequest($this->getHttpClient(), $httpRequest);
 
-        self::assertEquals($options, $request->getData());
+        self::assertEquals($data, $request->getData());
 
-        return [$request->send(), $options];
+        return [$request->send(), $data];
     }
 
     /**
@@ -68,11 +69,11 @@ class CompletePurchaseRequestTest extends TestCase
     public function testCvsSend($results)
     {
         $response = $results[0];
-        $options = $results[1];
+        $data = $results[1];
 
         self::assertTrue($response->isSuccessful());
         self::assertEquals('0000', $response->getCode());
         self::assertEquals('TV20180521000001', $response->getTransactionId());
-        self::assertEquals($options, $response->getData());
+        self::assertEquals($data, $response->getData());
     }
 }

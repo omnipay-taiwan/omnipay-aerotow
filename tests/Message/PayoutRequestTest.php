@@ -14,8 +14,8 @@ class PayoutRequestTest extends TestCase
             'ACID' => '8089205603291469800',
             'Total' => 100,
         ];
+        $this->getHttpRequest()->request->add($options);
         $request = new PayoutRequest($this->getHttpClient(), $this->getHttpRequest());
-        $request->initialize($options);
 
         self::assertEquals($options, $request->getData());
 
@@ -46,8 +46,8 @@ class PayoutRequestTest extends TestCase
             'Total' => 100,
             'mobileUrl' => 'https://aaa.bbb.com.tw/mPay?AA160824000000',
         ];
+        $this->getHttpRequest()->request->add($options);
         $request = new PayoutRequest($this->getHttpClient(), $this->getHttpRequest());
-        $request->initialize($options);
 
         self::assertEquals($options, $request->getData());
 

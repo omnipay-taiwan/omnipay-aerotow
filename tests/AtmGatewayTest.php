@@ -19,7 +19,10 @@ class AtmGatewayTest extends GatewayTestCase
 
     public function testPurchase()
     {
-        $options = ['endpoint' => 'foo.bar', 'OrderID' => 'abc', 'amount' => '10.00', 'ReAUrl' => 'foo.bar', 'ReBUrl' => 'foo.bar'];
+        $options = [
+            'endpoint' => 'foo.bar', 'OrderID' => 'abc', 'amount' => '10.00', 'ReAUrl' => 'foo.bar',
+            'ReBUrl' => 'foo.bar',
+        ];
         $request = $this->gateway->purchase($options);
 
         self::assertInstanceOf(PurchaseRequest::class, $request);
@@ -30,7 +33,8 @@ class AtmGatewayTest extends GatewayTestCase
     public function testCompletePurchase()
     {
         $options = ['transactionReference' => 'abc123'];
-        $request = $this->gateway->completePurchase($options);
+        $this->getHttpRequest()->request->add($options);
+        $request = $this->gateway->completePurchase();
 
         self::assertInstanceOf(CompletePurchaseRequest::class, $request);
     }
