@@ -4,8 +4,8 @@ namespace Omnipay\Aerotow\Tests;
 
 use Omnipay\Aerotow\CvsGateway;
 use Omnipay\Aerotow\Message\CompletePurchaseRequest;
-use Omnipay\Aerotow\Message\PayoutRequest;
 use Omnipay\Aerotow\Message\PurchaseRequest;
+use Omnipay\Aerotow\Message\GetPaymentInfoRequest;
 use Omnipay\Tests\GatewayTestCase;
 
 class CvsGatewayTest extends GatewayTestCase
@@ -38,10 +38,10 @@ class CvsGatewayTest extends GatewayTestCase
         self::assertInstanceOf(CompletePurchaseRequest::class, $request);
     }
 
-    public function testPayout()
+    public function testReceiveTransactionInfo()
     {
-        $request = $this->gateway->payout();
+        $request = $this->gateway->getPaymentInfo();
 
-        self::assertInstanceOf(PayoutRequest::class, $request);
+        self::assertInstanceOf(GetPaymentInfoRequest::class, $request);
     }
 }

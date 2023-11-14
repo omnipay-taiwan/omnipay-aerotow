@@ -5,7 +5,7 @@ namespace Omnipay\Aerotow\Message;
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RedirectResponseInterface;
 
-class PayoutResponse extends AbstractResponse implements RedirectResponseInterface
+class GetPaymentInfoResponse extends AbstractResponse implements RedirectResponseInterface
 {
     /**
      * Is the response successful?
@@ -14,7 +14,7 @@ class PayoutResponse extends AbstractResponse implements RedirectResponseInterfa
      */
     public function isSuccessful()
     {
-        return $this->isRedirect() === false;
+        return array_key_exists('Ordernum', $this->data);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace Omnipay\Aerotow\Message;
 
 use Omnipay\Aerotow\Traits\HasAmount;
 use Omnipay\Aerotow\Traits\HasMerchant;
+use Omnipay\Aerotow\Traits\HasPaymentInfo;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Message\AbstractRequest;
 
@@ -11,6 +12,7 @@ class PurchaseRequest extends AbstractRequest
 {
     use HasMerchant;
     use HasAmount;
+    use HasPaymentInfo;
 
     /**
      * @param  string  $value
@@ -150,6 +152,16 @@ class PurchaseRequest extends AbstractRequest
         return $this->getNotifyUrl();
     }
 
+    public function setReturnUrl($value)
+    {
+        return $this->setPaymentInfoUrl($value);
+    }
+
+    public function getReturnUrl()
+    {
+        return $this->getPaymentInfoUrl();
+    }
+
     /**
      * @return array
      *
@@ -184,7 +196,7 @@ class PurchaseRequest extends AbstractRequest
      */
     private function getAtmData()
     {
-        $this->validate('endpoint', 'Merchant', 'transactionId', 'amount', 'notifyUrl', 'returnUrl');
+        $this->validate('endpoint', 'Merchant', 'transactionId', 'amount', 'notifyUrl', 'paymentInfoUrl');
 
         return [
             'Merchent' => $this->getMerchant(),
@@ -193,7 +205,7 @@ class PurchaseRequest extends AbstractRequest
             'Product' => $this->getProduct(),
             'Name' => $this->getName(),
             'MSG' => $this->getDescription(),
-            'ReAUrl' => $this->getReturnUrl(),
+            'ReAUrl' => $this->getPaymentInfoUrl(),
             'ReBUrl' => $this->getNotifyUrl(),
         ];
     }
@@ -205,7 +217,7 @@ class PurchaseRequest extends AbstractRequest
      */
     private function getCvsData()
     {
-        $this->validate('endpoint', 'Merchant', 'Name', 'transactionId', 'amount', 'notifyUrl', 'returnUrl');
+        $this->validate('endpoint', 'Merchant', 'Name', 'transactionId', 'amount', 'notifyUrl', 'paymentInfoUrl');
 
         return array_merge($this->getAtmData(), [
             'Hour' => $this->getHour(),

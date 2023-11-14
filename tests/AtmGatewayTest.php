@@ -4,8 +4,8 @@ namespace Omnipay\Aerotow\Tests;
 
 use Omnipay\Aerotow\AtmGateway;
 use Omnipay\Aerotow\Message\CompletePurchaseRequest;
-use Omnipay\Aerotow\Message\PayoutRequest;
 use Omnipay\Aerotow\Message\PurchaseRequest;
+use Omnipay\Aerotow\Message\GetPaymentInfoRequest;
 use Omnipay\Tests\GatewayTestCase;
 
 class AtmGatewayTest extends GatewayTestCase
@@ -39,11 +39,11 @@ class AtmGatewayTest extends GatewayTestCase
         self::assertInstanceOf(CompletePurchaseRequest::class, $request);
     }
 
-    public function testPayout()
+    public function testGetPaymentInfo()
     {
         $options = ['ACID' => 'ACID'];
-        $request = $this->gateway->payout($options);
+        $request = $this->gateway->getPaymentInfo($options);
 
-        self::assertInstanceOf(PayoutRequest::class, $request);
+        self::assertInstanceOf(GetPaymentInfoRequest::class, $request);
     }
 }

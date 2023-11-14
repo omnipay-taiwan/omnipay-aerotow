@@ -2,10 +2,10 @@
 
 namespace Omnipay\Aerotow\Tests\Message;
 
-use Omnipay\Aerotow\Message\PayoutRequest;
+use Omnipay\Aerotow\Message\GetPaymentInfoRequest;
 use Omnipay\Tests\TestCase;
 
-class PayoutRequestTest extends TestCase
+class GetPaymentInfoRequestTest extends TestCase
 {
     public function testAtmGetData()
     {
@@ -15,7 +15,7 @@ class PayoutRequestTest extends TestCase
             'Total' => 100,
         ];
         $this->getHttpRequest()->request->add($options);
-        $request = new PayoutRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new GetPaymentInfoRequest($this->getHttpClient(), $this->getHttpRequest());
 
         self::assertEquals($options, $request->getData());
 
@@ -47,7 +47,7 @@ class PayoutRequestTest extends TestCase
             'mobileUrl' => 'https://aaa.bbb.com.tw/mPay?AA160824000000',
         ];
         $this->getHttpRequest()->request->add($options);
-        $request = new PayoutRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new GetPaymentInfoRequest($this->getHttpClient(), $this->getHttpRequest());
 
         self::assertEquals($options, $request->getData());
 
@@ -64,7 +64,7 @@ class PayoutRequestTest extends TestCase
         $response = $results[0];
         $options = $results[1];
 
-        self::assertFalse($response->isSuccessful());
+        self::assertTrue($response->isSuccessful());
         self::assertTrue($response->isRedirect());
         self::assertEquals($options['Ordernum'], $response->getTransactionId());
         self::assertEquals($options, $response->getData());

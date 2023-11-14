@@ -6,7 +6,7 @@ use Omnipay\Aerotow\Traits\HasOrderInfo;
 use Omnipay\Common\Message\AbstractRequest;
 use Omnipay\Common\Message\ResponseInterface;
 
-class PayoutRequest extends AbstractRequest
+class GetPaymentInfoRequest extends AbstractRequest
 {
     /**
      * @return array
@@ -22,6 +22,6 @@ class PayoutRequest extends AbstractRequest
      */
     public function sendData($data)
     {
-        return $this->response = new PayoutResponse($this, $data);
+        return $this->response = new GetPaymentInfoResponse($this, $data);
     }
 }
