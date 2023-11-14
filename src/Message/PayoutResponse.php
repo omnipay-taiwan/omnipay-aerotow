@@ -41,4 +41,9 @@ class PayoutResponse extends AbstractResponse implements RedirectResponseInterfa
     {
         return $this->data['mobileUrl'];
     }
+
+    public function getReply()
+    {
+        return $this->isSuccessful() ? 'OK' : 'FAIL';
+    }
 }
