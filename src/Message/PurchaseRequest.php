@@ -10,8 +10,8 @@ use Omnipay\Common\Message\AbstractRequest;
 
 class PurchaseRequest extends AbstractRequest
 {
-    use HasMerchant;
     use HasAmount;
+    use HasMerchant;
     use HasPaymentInfo;
 
     /**

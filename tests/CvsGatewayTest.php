@@ -4,8 +4,8 @@ namespace Omnipay\Aerotow\Tests;
 
 use Omnipay\Aerotow\CvsGateway;
 use Omnipay\Aerotow\Message\CompletePurchaseRequest;
-use Omnipay\Aerotow\Message\PurchaseRequest;
 use Omnipay\Aerotow\Message\GetPaymentInfoRequest;
+use Omnipay\Aerotow\Message\PurchaseRequest;
 use Omnipay\Tests\GatewayTestCase;
 
 class CvsGatewayTest extends GatewayTestCase

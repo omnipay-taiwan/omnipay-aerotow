@@ -2,7 +2,6 @@
 
 namespace Omnipay\Aerotow\Message;
 
-use Omnipay\Aerotow\Traits\HasOrderInfo;
 use Omnipay\Common\Message\AbstractRequest;
 use Omnipay\Common\Message\ResponseInterface;
 
