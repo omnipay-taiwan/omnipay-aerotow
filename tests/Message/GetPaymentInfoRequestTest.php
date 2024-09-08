@@ -32,7 +32,7 @@ class GetPaymentInfoRequestTest extends TestCase
         $response = $results[0];
         $options = $results[1];
 
-        self::assertTrue($response->isSuccessful());
+        self::assertFalse($response->isSuccessful());
         self::assertFalse($response->isRedirect());
         self::assertEquals($options['Ordernum'], $response->getTransactionId());
         self::assertEquals($options, $response->getData());
@@ -64,7 +64,7 @@ class GetPaymentInfoRequestTest extends TestCase
         $response = $results[0];
         $options = $results[1];
 
-        self::assertTrue($response->isSuccessful());
+        self::assertFalse($response->isSuccessful());
         self::assertTrue($response->isRedirect());
         self::assertEquals($options['Ordernum'], $response->getTransactionId());
         self::assertEquals($options, $response->getData());

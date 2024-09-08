@@ -14,7 +14,7 @@ class GetPaymentInfoResponse extends AbstractResponse implements RedirectRespons
      */
     public function isSuccessful()
     {
-        return array_key_exists('Ordernum', $this->data);
+        return false;
     }
 
     /**
@@ -44,6 +44,6 @@ class GetPaymentInfoResponse extends AbstractResponse implements RedirectRespons
 
     public function getReply()
     {
-        return $this->isSuccessful() ? 'OK' : 'FAIL';
+        return 'OK';
     }
 }
